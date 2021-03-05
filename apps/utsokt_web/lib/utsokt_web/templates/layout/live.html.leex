@@ -1,0 +1,43 @@
+    <header>
+      <div>
+        <img phx-track-static src="<%= Routes.static_path(@socket, "/images/semla.svg") %>" alt="Utsökt: " class="logo" width="64" height="64" aria-hidden="true">
+        <h1><%= assigns[:page_title] || gettext("Utsökt") %></h1>
+      </div>
+      <form method="get" action="">
+        <label for="text-filter">Filter links: <input type="search" id="text-filter" name="q"></label
+      </form>
+    </header>
+    <nav>
+      <ul class="flat-list">
+        <li class="nav-item">
+          <%= live_patch to: Routes.links_path(@socket, :index) do %>
+            <%= gettext "Unread" %>
+          <% end %>
+          (<%= Map.get(@counts, :unread) %>)
+        </li>
+        <li class="nav-item">
+          <%= live_patch to: Routes.links_path(@socket, :archived) do %>
+            <%= gettext "Archived" %>
+          <% end %>
+          (<%= Map.get(@counts, :archived) %>)
+        </li>
+      </ul>
+    </nav>
+    <main role="main" class="container">
+      <i class="alert alert-info" role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="info"><%= live_flash(@flash, :info) %></i>
+
+      <i class="alert alert-danger" role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="error"><%= live_flash(@flash, :error) %></i>
+
+      <%= @inner_content %>
+    </main>
+    <footer>
+      <p>
+      <img phx-track-static src="<%= Routes.static_path(@socket, "/images/semla.svg") %>" alt="Utsökt: " width="16" height="16" aria-hidden="true">
+      <%= link "Utsökt", to: "https://github.com/madr/utsokt" %>, made by <%= link "Anders", to: "https://madr.se" %>.
+        Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      </p>
+    </footer>

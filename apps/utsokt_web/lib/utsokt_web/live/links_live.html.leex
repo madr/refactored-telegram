@@ -1,0 +1,12 @@
+<%= for item <- @links do %>
+  <article class="item">
+    <%= link(to: item.url) do %>
+      <h2><%= item.title %></h2>
+    <% end %>
+    <%= unless item.excerpt == "" do %>
+      <p>
+        <%= item.excerpt %>
+      </p>
+    <% end %>
+  </article>
+<% end %>

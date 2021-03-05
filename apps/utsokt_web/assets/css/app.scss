@@ -1,0 +1,79 @@
+$border: 6px double #333;
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  font-size: medium;
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+body > div {
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "sidebar main"
+  "footer footer"
+  ;
+  grid-template-columns: 10em 1fr;
+  grid-template-rows: auto 1fr auto;
+
+}
+
+header {
+  grid-area: header;
+  border-bottom: $border;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 3em;
+  height: 3em;
+  margin-right: 1em;
+}
+
+footer {
+  grid-area: footer;
+  border-top: $border;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  grid-area: sidebar;
+  overflow: auto;
+  border-right: $border;
+}
+
+body > div {
+  grid-area: main;
+}
+
+article {
+  padding: 1em;
+  border-bottom: $border;
+}
+
+.alert:empty {
+  display: none;
+}
+
+.flat-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.nav-item {
+  display: block;
+  padding: 1em;
+  border-bottom: $border;
+}
